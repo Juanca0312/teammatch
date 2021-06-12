@@ -21,6 +21,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api")
 @CrossOrigin
+@Tag(name = "Players", description = "Player API")
 public class PlayerController {
 
     @Autowired
@@ -69,6 +70,12 @@ public class PlayerController {
     public PlayerResource updatePlayer(@PathVariable(name = "id") Long playerId, @Valid @RequestBody SavePlayerResource resource) {
         Player player = convertToEntity(resource);
         return convertToResource(playerService.updatePlayer(playerId, player));
+    }
+
+    @PostMapping("/login")
+    public PlayerResource login(@Valid @RequestBody SavePlayerResource resource)  {
+        Player player = convertToEntity(resource);
+        return convertToResource(playerService.login(player));
     }
 
 

@@ -13,5 +13,6 @@ public interface PlayerService {
     Player getPlayerByUsername(String username);
     Player updatePlayer(Long playerId, Player playerRequest);
     Player updateLastConnection(Long playerId);
+    Player login(Player player);
 
 }
