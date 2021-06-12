@@ -39,4 +39,10 @@ public class Team {
     @JsonIgnore
     private List<Player> players;
 
+    //One to One Filter
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "filter_id", referencedColumnName = "id")
+    @JsonIgnore
+    private Filter filter;
+
 }

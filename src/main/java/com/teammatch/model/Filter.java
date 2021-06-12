@@ -49,4 +49,8 @@ public class Filter {
     @JsonIgnore
     private Player player;
 
+    @OneToOne(mappedBy = "filter")
+    @JsonIgnore
+    private Team team;
+
 }
