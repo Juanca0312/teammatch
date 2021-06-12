@@ -45,4 +45,8 @@ public class Filter {
     @NotNull
     private float rating;
 
+    @OneToOne(mappedBy = "filter")
+    @JsonIgnore
+    private Player player;
+
 }

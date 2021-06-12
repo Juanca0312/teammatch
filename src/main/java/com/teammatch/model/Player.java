@@ -40,6 +40,11 @@ public class Player {
     @JsonIgnore
     private Profile profile;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "filter_id", referencedColumnName = "id")
+    @JsonIgnore
+    private Filter filter;
+
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "players_games",
