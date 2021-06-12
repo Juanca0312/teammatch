@@ -53,6 +53,15 @@ public class Player {
     @JsonIgnore
     List<Game> games;
 
+    //Relationship with Chat
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "players_chats",
+            joinColumns = {@JoinColumn(name = "player_id")},
+            inverseJoinColumns = {@JoinColumn(name = "chat_id")})
+    @JsonIgnore
+    List<Chat> chats;
+
 
     //TODO: MANY TO MANY TEAMS
 
