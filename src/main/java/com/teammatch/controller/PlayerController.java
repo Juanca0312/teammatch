@@ -63,6 +63,14 @@ public class PlayerController {
         return convertToResource(playerService.getPlayerByUsername(username));
     }
 
+    @Operation(summary = "Update a player.", description = "Updates a player's information, given its Id.",
+            tags = { "players" })
+    @PutMapping("/players/{id}")
+    public PlayerResource updatePlayer(@PathVariable(name = "id") Long playerId, @Valid @RequestBody SavePlayerResource resource) {
+        Player player = convertToEntity(resource);
+        return convertToResource(playerService.updatePlayer(playerId, player));
+    }
+
 
     private Player convertToEntity(SavePlayerResource resource) {
         return mapper.map(resource, Player.class);

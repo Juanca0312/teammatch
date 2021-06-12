@@ -57,5 +57,27 @@ public class PlayerServiceImpl implements PlayerService{
         }
     }
 
+    @Override
+    public Player updatePlayer(Long playerId, Player playerRequest) {
+        Player player = playerRepository.findById(playerId)
+                .orElseThrow(() -> new ResourceNotFoundException("Player", "Id", playerId));
+        player.setUsername(playerRequest.getUsername());
+        player.setPassword(playerRequest.getPassword());
+        player.setHours(playerRequest.getHours());
+        return playerRepository.save(updateLastConnection(player.getId()));
+    }
+
+    @Override
+    public Player updateLastConnection(Long playerId) {
+        Player player = playerRepository.findById(playerId)
+                .orElseThrow(() -> new ResourceNotFoundException("Player", "Id", playerId));
+
+        Date last_connection = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String string_last_connection = formatter.format(last_connection);
+        player.setLast_connection(string_last_connection);
+        return playerRepository.save(player);
+    }
+
 
 }
