@@ -35,6 +35,9 @@ public class Player {
     @NotBlank
     private String last_connection;
 
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "profile_id", referencedColumnName = "id")
+    @JsonIgnore
+    private Profile profile;
 
 }
