@@ -16,10 +16,5 @@ public class Chat {
     private Long id;
 
 
-    //Relationship with Player
-    @ManyToMany(fetch = FetchType.LAZY,
-                cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-                mappedBy = "chats")
-    @JsonIgnore
-    List<Player> players;
+
 }
