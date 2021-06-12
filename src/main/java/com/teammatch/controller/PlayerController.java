@@ -37,6 +37,32 @@ public class PlayerController {
         return new PageImpl<>(resources, pageable, resources.size());
     }
 
+    @Operation(summary = "Create a player.", description = "Creates a new player.", tags = { "players" })
+    @PostMapping("/players")
+    public PlayerResource createPlayer(@Valid @RequestBody SavePlayerResource resource)  {
+        Player player = convertToEntity(resource);
+        return convertToResource(playerService.createPlayer(player));
+    }
+
+    @Operation(summary = "Gets a player.", description = "Gets a particular player's information by its Id.",
+            tags = { "players" })
+    @GetMapping("/players/{id}")
+    public PlayerResource getPlayerById(@PathVariable(name = "id") Long playerId) {
+        return convertToResource(playerService.getPlayerById(playerId));
+    }
+
+    @Operation(summary = "Deletes a player.", description = "Deletes a particular player, given its Id.",
+            tags = { "players" })
+    @DeleteMapping("/players/{id}")
+    public ResponseEntity<?> deletePlayer(@PathVariable(name = "id") Long playerId) {
+        return playerService.deletePlayer(playerId);
+    }
+
+    @GetMapping("/playersUsername/{username}")
+    public PlayerResource getUserByUsername(@PathVariable(name = "username") String username) {
+        return convertToResource(playerService.getPlayerByUsername(username));
+    }
+
 
     private Player convertToEntity(SavePlayerResource resource) {
         return mapper.map(resource, Player.class);
