@@ -7,4 +7,8 @@ import org.springframework.http.ResponseEntity;
 
 public interface PlayerService {
     Page<Player> getAllPlayers(Pageable pageable);
+    ResponseEntity<?> deletePlayer(Long playerId);
+    Player createPlayer(Player player);
+    Player getPlayerById(Long playerId);
+    Player getPlayerByUsername(String username);
 }

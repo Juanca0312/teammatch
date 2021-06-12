@@ -22,4 +22,40 @@ public class PlayerServiceImpl implements PlayerService{
         return playerRepository.findAll(pageable);
     }
 
+    @Override
+    public Player getPlayerById(Long playerId) {
+        return playerRepository.findById(playerId)
+                .orElseThrow(() -> new ResourceNotFoundException("Player", "Id", playerId));
+    }
+
+    @Override
+    public Player createPlayer(Player player) {
+        Date last_connection = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String string_last_connection = formatter.format(last_connection);
+        player.setLast_connection(string_last_connection);
+        return playerRepository.save(player);
+    }
+
+    @Override
+    public ResponseEntity<?> deletePlayer(Long playerId) {
+        Player player = playerRepository.findById(playerId)
+                .orElseThrow(() -> new ResourceNotFoundException("Player", "Id", playerId));
+        playerRepository.delete(player);
+        return ResponseEntity.ok().build();
+    }
+
+    @Override
+    public Player getPlayerByUsername(String username){
+        Player myplayer = playerRepository.findByUsername(username);
+        if(myplayer == null){
+            Player player = new Player();
+            return player;
+        }
+        else{
+            return myplayer;
+        }
+    }
+
+
 }
