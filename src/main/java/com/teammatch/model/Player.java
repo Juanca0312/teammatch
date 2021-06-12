@@ -48,4 +48,6 @@ public class Player {
     @JsonIgnore
     List<Game> games;
 
+    //TODO: MANY TO MANY TEAMS
+
 }
