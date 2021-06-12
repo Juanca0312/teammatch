@@ -45,12 +45,4 @@ public class Filter {
     @NotNull
     private float rating;
 
-    //One To One with Player and Team
-    @OneToOne(mappedBy = "filter")
-    @JsonIgnore
-    private Player player;
-
-    @OneToOne(mappedBy = "filter")
-    @JsonIgnore
-    private Team team;
 }

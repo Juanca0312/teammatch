@@ -48,10 +48,6 @@ public class Player {
     @JsonIgnore
     List<Game> games;
 
-    //One to One Filter
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "filter_id", referencedColumnName = "id")
-    private Filter filter;
 
     //TODO: MANY TO MANY TEAMS
 
