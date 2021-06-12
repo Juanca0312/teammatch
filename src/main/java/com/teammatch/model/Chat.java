@@ -15,10 +15,10 @@ public class Chat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-            mappedBy = "chats")
-    @JsonIgnore
-    private List<Player> players;
+    //@ManyToMany(fetch = FetchType.LAZY,
+    //        cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+    //        mappedBy = "chats")
+    //@JsonIgnore
+    //private List<Player> players;
 
 }
