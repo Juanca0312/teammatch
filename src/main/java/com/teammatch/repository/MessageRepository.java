@@ -10,6 +10,6 @@ import java.util.Optional;
 
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Long> {
-    Page<Message> findByChatId(Long chatId, Pageable pageable);
-    Optional<Message> findByIdAndChatId(Long id, Long chatId);
+    //Page<Message> findByChatId(Long chatId, Pageable pageable);
+    //Optional<Message> findByIdAndChatId(Long id, Long chatId);
 }
