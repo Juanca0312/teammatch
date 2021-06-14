@@ -26,8 +26,9 @@ public class Message {
 
     private boolean isHyperLink;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    //TODO: ManyToOne relationship
+    /*@ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "chat_id", nullable = false)
     @JsonIgnore
-    private Chat chat;
+    private Chat chat;*/
 }
