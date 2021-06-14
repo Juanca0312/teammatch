@@ -11,7 +11,6 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "messages")
-@EntityListeners(AuditingEntityListener.class)
 @Data
 public class Message {
     @Id
@@ -29,7 +28,6 @@ public class Message {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "chat_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Chat chat;
 }
