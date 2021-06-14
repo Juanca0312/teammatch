@@ -53,6 +53,7 @@ public class Player {
     @JsonIgnore
     List<Game> games;
 
+    //TODO: MANY TO MANY CHAT
     //@ManyToMany(fetch = FetchType.LAZY,
     //        cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 //JoinTable(name = "players_chats",
