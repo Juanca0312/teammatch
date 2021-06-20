@@ -6,6 +6,7 @@ Feature: Claim Battle Pass Rewards
     When I pass time in the app looking for players
     Then I could claim <rewards type>
     And I could level up my account <speed type>
+    
     Examples:
     |registered      |account type     |rewards type     |speed type      |
     |"Not registered"|"Non account"    |"No rewards"     |"When I sign up"|
